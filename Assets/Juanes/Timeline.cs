@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
-public class Timeline : MonoBehaviour
+public class StartTimeline : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayableDirector director;
 
-    // Update is called once per frame
-    void Update()
+    public void PlayTimeline()
     {
-        
+        if (director != null)
+        {
+            director.Play();
+        }
+    }
+    public void TogglePlayPause()
+    {
+        if (director != null)
+        {
+            if (director.state == PlayState.Playing)
+            {
+                director.Pause();
+            }
+            else if (director.state == PlayState.Paused)
+            {
+                director.Play();
+            }
+        }
     }
 }
